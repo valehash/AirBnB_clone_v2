@@ -124,9 +124,8 @@ class HBNBCommand(cmd.Cmd):
         check_agr = agr[0].split(' ', 1)
 
         class_name = check_agr[0]
-        
+
         agr[0] = check_agr[1] if len(check_agr) > 1 else None
-        
 
         if len(agr) >= 2:
             Use_Args = False
@@ -134,17 +133,17 @@ class HBNBCommand(cmd.Cmd):
             print(f"** {class_name} class doesn't exist **")
             return
 
-        if Use_Args:
+        if not agr[0]:
             new_instance = HBNBCommand.classes[class_name]()
             storage.save()
             print(new_instance.id)
-            storage.save()
-        elif not Use_Args:  # using kwargs instea of args
+        else:  # using kwargs instea of args
             # list [State, name="California"
             new_instance = HBNBCommand.classes[class_name]()
             d = dict(x.split("=") for x in " ".join(agr).split(" "))
             print(f"d = {d}")
             for k, v in d.items():
+                print(k, v)
                 v.strip('\"')
                 v = v.strip('"')
 
