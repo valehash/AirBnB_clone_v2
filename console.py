@@ -138,8 +138,19 @@ class HBNBCommand(cmd.Cmd):
             d = dict(x.split("=") for x in " ".join(agr[1:]).split(" "))
             
             for k, v in d.items():
-                print(k, v.strip('\"'))
-                setattr(new_instance,k, v.strip('\"'))
+                if v.startswith('"'):
+                    v = v.strip('"')
+                    
+                    v = v.replace('_', '')
+                    
+                    v = v.replace('"', r'\"')
+                elif '.' in v:
+                    float(v)
+                else:
+                    v = int(v)
+
+                print(k, v)
+                setattr(new_instance,k, v)
 
             print(new_instance.id)
             storage.save()
