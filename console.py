@@ -121,10 +121,12 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         agr = args.split('" ')
+        check_agr = agr[0].split(' ', 1)
 
-        class_name = agr[0].split(' ', 1)[0]
-        agr[0] = agr[0].split(' ', 1)[1]
-        print(f"arg = {agr}")
+        class_name = check_agr[0]
+        
+        agr[0] = check_agr[1] if len(check_agr) > 1 else None
+        
 
         if len(agr) >= 2:
             Use_Args = False
