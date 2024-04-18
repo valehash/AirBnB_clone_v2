@@ -134,12 +134,14 @@ class HBNBCommand(cmd.Cmd):
         elif Use_Args==False:# using kwargs instea of args
         # list [State, name="California"
             class_name = agr[0]
-            d = dict(x.split("=") for x in agr[1].split(" "))
-            for k, v in d.items():
-                print(k, v)
-
             new_instance = HBNBCommand.classes[class_name]()
-            setattr(new_instance,k, v.strip('\"'))
+            d = dict(x.split("=") for x in " ".join(agr[1:]).split(" "))
+            
+            for k, v in d.items():
+                print(k, v.strip('\"'))
+                setattr(new_instance,k, v.strip('\"'))
+
+            print(new_instance.id)
             storage.save()
 
 
