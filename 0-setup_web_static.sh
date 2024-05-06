@@ -10,7 +10,7 @@ fi
 #  make the directories web_static/realeases/test and webstaic/shared
 sudo mkdir -p /data/web_static/{releases/test,shared}
 # changing the owner and group of the data foder to ubuntu
-sudo chown -R ubuntu:ubuntu /data
+sudo chown -R ubuntu:ubuntu /data/
  
 #symlink web_static/current with web_static/realeases/test
 if [ -L /data/web_static/current ]; then rm -Rf /data/web_static/current ; fi
