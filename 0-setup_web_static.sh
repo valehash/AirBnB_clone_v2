@@ -16,7 +16,7 @@ sudo mkdir -p /data/web_static/{releases/test,shared}
 if [ -L /data/web_static/current ]; then rm -Rf /data/web_static/current ; fi
 # if [ -d "$WORKING_DIR" ]; then rm -Rf $WORKING_DIR; fi
 sudo ln -sf /data/web_static/releases/test /data/web_static/current
-sudo chown -R ubuntu:ubuntu /data/
+sudo chown -hR ubuntu:ubuntu /data/
 echo "<html>
 <head>
 </head>
