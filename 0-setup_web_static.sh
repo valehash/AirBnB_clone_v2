@@ -16,14 +16,13 @@ sudo chown -R ubuntu:ubuntu /data
 if [ -L /data/web_static/current ]; then rm -Rf /data/web_static/current ; fi
 # if [ -d "$WORKING_DIR" ]; then rm -Rf $WORKING_DIR; fi
 sudo ln -sf /data/web_static/releases/test /data/web_static/current
-echo 
-"<html>
+echo "<html>
 <head>
 </head>
   <body>
     Holberton School
   </body>
-</html>" | sudo tee "/data/web_static/current/index.html"
+</html>" | sudo tee "/data/web_static/current/index.html" &> /dev/null
 
 
 sudo sed -i '44i\ location /hbnb_static {\
