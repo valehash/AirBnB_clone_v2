@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Python script to begin web apps"""
 
-from flask import Flask
+from flask import Flask, render_template
 
 app =  Flask(__name__)
 app.url_map.strict_slashes = False
@@ -66,8 +66,29 @@ def display_number(num):
 
 
 
+@app.route("/number_template/<int:num>", strict_slashes=False)
+def template_number(num):
+    """Function to display the user subpath
+        Returns: prompt is a number
+    """
+    if not isinstance(num, int):
+        return app.aborter(404)
+    return render_template('5-number.html', number=num)
 
 
+@app.route("/number_odd_or_even/<int:num>", strict_slashes=False)
+def template_even_or_odd(num):
+    """Function to display the user subpath
+        Returns: prompt is a number
+    """
+    if not isinstance(num, int):
+        return app.aborter(404)
+
+    if num % 2 == 0:
+        string = "is even"
+    else:
+        string = "is odd"
+    return render_template('6-number_odd_or_even.html', number=num, text=string)
 
 
 if __name__ == "__main__":

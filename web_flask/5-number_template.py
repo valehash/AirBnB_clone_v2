@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Python script to begin web apps"""
 
-from flask import Flask
+from flask import Flask, render_template
 
 app =  Flask(__name__)
 app.url_map.strict_slashes = False
@@ -66,8 +66,14 @@ def display_number(num):
 
 
 
-
-
+@app.route("/number_template/<int:num>", strict_slashes=False)
+def template_number(num):
+    """Function to display the user subpath
+        Returns: prompt is a number
+    """
+    if not isinstance(num, int):
+        return app.aborter(404)
+    return render_template('5-number.html', number=num)
 
 
 if __name__ == "__main__":
